@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Question;
+use App\nfl;
 
 class myController extends Controller
 {
@@ -41,6 +42,7 @@ class myController extends Controller
     	$questions = Question::all();
     	return view('frontend.questions', ["questions" => $questions]);
 }
+
     
         public function newTeam() {
     	$team = new nflteams;
@@ -54,6 +56,7 @@ class myController extends Controller
         $team->color_primary = Input::get('color_primary');
         $team->color_secondary = Input::get('color_secondary');
         $team->color_alternate = Input::get('color_alternate');
+        return view('frontend.nfl', ["team" => $team]);
  }
     
 
