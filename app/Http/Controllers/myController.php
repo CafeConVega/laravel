@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Question;
-use App\nfl;
+use App\nflteams;
 
 class myController extends Controller
 {
