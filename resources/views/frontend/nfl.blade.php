@@ -11,7 +11,7 @@
             }
 
             body {
-                margin: 0;
+                margin: 10;
                 padding: 0;
                 width: 100%;
                 display: table;
@@ -21,6 +21,7 @@
         </style>
     </head>
     <body>
+      <div class="form">
        <h1>Enter NFL Team Details</h1>
        {{ Form::open(array('url' => 'nfl'))}}
            {{ Form::label('city', 'City')}}
@@ -48,7 +49,7 @@
            <br>
            <br>
            {{ Form::label('color_primary', 'Primary Color')}}
-           {{ Form::text('primary_color_primary')}}
+           {{ Form::text('color_primary')}}
            <br>
            <br>
            {{ Form::label('color_secondary', 'Secondary Color')}}
@@ -61,5 +62,15 @@
            <br>
            {{ Form::submit('Submit')}}
        {{ Form::close()}}
+       </div>
+       
+       <div class="teams">
+              @foreach($teams as $teamss)
+                  
+                   <h3>{{ $teamss->city.", ".$teamss->state." ".$teamss->name." Play at ".$teamss->stadium." and play in the ".$teamss->conference." ".$teamss->division }}</h3>
+                   
+                   
+               @endforeach
+       </div>
     </body>
 </html>

@@ -44,7 +44,7 @@ class myController extends Controller
 }
 
     
-        public function newTeam(Request $request) {
+    public function newTeam(Request $request) {
     	$team = new nflteams;
         
         $team->city = $request->input('city');
@@ -56,14 +56,14 @@ class myController extends Controller
         $team->color_primary = $request->input('color_primary');
         $team->color_secondary = $request->input('color_secondary');
         $team->color_alternate = $request->input('color_alternate');
-        
+        $team->save();
         $teams = nflteams::all();
-        return view('frontend.nfl', ["team" => $team]);
+        return view('frontend.nfl', ["teams" => $teams]);
  }
     
-        public function allTeams() {
+    public function allTeams() {
         $teams = nflteams::all();
-        return view('frontend.nfl');
+        return view('frontend.nfl', ["teams" => $teams]);
 }
 
     
