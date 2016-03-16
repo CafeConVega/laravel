@@ -61,6 +61,5 @@
            <br>
            {{ Form::submit('Submit')}}
        {{ Form::close()}}
-       
     </body>
 </html>

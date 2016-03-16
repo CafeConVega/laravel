@@ -21,9 +21,11 @@ Route::post('hello', 'myController@gotWhatever')->name('saidhello');
 Route::get('questions', 'myController@questions')->name('questions');
 Route::post('questions', 'myController@new_question')->name('new_question');
 
-Route::get('nfl', function () {
-    return view('frontend.nfl');
-});
+//Route::get('nfl', function () {
+//    return view('frontend.nfl');
+//});
+
+Route::get('nfl', 'myController@allTeams');
 
 Route::post('nfl', 'myController@newTeam');
 

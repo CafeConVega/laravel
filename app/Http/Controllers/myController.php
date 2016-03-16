@@ -44,21 +44,27 @@ class myController extends Controller
 }
 
     
-        public function newTeam() {
+        public function newTeam(Request $request) {
     	$team = new nflteams;
         
-        $team->city = Input::get('city');
-        $team->state = Input::get('state');
-        $team->name = Input::get('name');
-        $team->stadium = Input::get('stadium');
-        $team->conference = Input::get('conference');
-        $team->division = Input::get('division');
-        $team->color_primary = Input::get('color_primary');
-        $team->color_secondary = Input::get('color_secondary');
-        $team->color_alternate = Input::get('color_alternate');
+        $team->city = $request->input('city');
+        $team->state = $request->input('state');
+        $team->name = $request->input('name');
+        $team->stadium = $request->input('stadium');
+        $team->conference = $request->input('conference');
+        $team->division = $request->input('division');
+        $team->color_primary = $request->input('color_primary');
+        $team->color_secondary = $request->input('color_secondary');
+        $team->color_alternate = $request->input('color_alternate');
+        
+        $teams = nflteams::all();
         return view('frontend.nfl', ["team" => $team]);
  }
     
+        public function allTeams() {
+        $teams = nflteams::all();
+        return view('frontend.nfl');
+}
 
     
 
