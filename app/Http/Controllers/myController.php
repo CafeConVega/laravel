@@ -65,6 +65,12 @@ class myController extends Controller
         $teams = nflteams::all();
         return view('frontend.nfl', ["teams" => $teams]);
 }
+    
+     public function teamsJson() {
+        $teams = nflteams::all();
+        return response()->json($teams);
+    }
+
 
     
 
