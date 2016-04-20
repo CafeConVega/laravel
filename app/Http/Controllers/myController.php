@@ -76,13 +76,13 @@ class myController extends Controller
     public function gameJSON($id) {
         $game = game::find($id);
         $plays = array();
-        foreach($game->plays as $play) {
+        foreach($game->play as $play) {
 //            $plays[] = $play;
             $obj = new \stdClass;
             $obj = $play;
             $obj->player = $play->player;
 //            $play->player
-            $plays[] = $obj;
+            $play[] = $obj;
         }
 /*        foreach($game->play_player as $play_player) {
             $returnedObject = new \stdClass;
