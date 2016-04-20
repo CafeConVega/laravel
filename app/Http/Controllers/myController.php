@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Question;
 use App\nflteams;
+use App\game;
 
 class myController extends Controller
 {
@@ -69,6 +70,11 @@ class myController extends Controller
      public function teamsJson() {
         $teams = nflteams::all();
         return response()->json($teams);
+    }  
+    
+    public function gameJSON($id) {
+        $game = game::find($id);
+        return response()->json($game);
     }
 
 

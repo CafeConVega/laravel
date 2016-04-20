@@ -27,7 +27,7 @@ Route::post('nfl', 'myController@newTeam');
 
 Route::get('json', 'myController@teamsJson')->name('tjson');
 
-
+Route::get('game/{id}', 'myController@gameJSON')->name('gamejson');
 
 
 
