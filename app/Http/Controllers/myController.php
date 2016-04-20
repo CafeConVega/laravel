@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Question;
 use App\nflteams;
 use App\game;
+use App\play;
 
 class myController extends Controller
 {
