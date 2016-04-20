@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class player extends Model
 {
     protected $table = 'player';
+    protected $primaryKey = 'player_id';
     
      public function team() {
-        return $this->belongsTo('app\team', 'team', 'team_id');
+        return $this->belongsTo('App\team', 'team', 'team_id');
     }
     
     public function play_player() {
-        return $this->hasMany('app\play_player', 'player_id', 'player_id');
+        return $this->hasMany('App\play_player', 'player_id', 'player_id');
     }
 }

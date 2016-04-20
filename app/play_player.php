@@ -13,19 +13,19 @@ class play_player extends Model
     }
     
     public function player() {
-        return $this->belongsTo('app\player', 'player_id', 'player_id');
+        return $this->belongsTo('App\player', 'player_id', 'player_id');
     }
     
     public function drive() {
-        return $this->belongsTo('app\drive', 'drive_id', 'drive_id');
+        return $this->belongsTo('App\drive', 'drive_id', 'drive_id');
     }
     
     public function game() {
-        return $this->belongsTo('app\game', 'gsis_id', 'gsis_id');
+        return $this->belongsTo('App\game', 'gsis_id', 'gsis_id');
     }
     
     public function team() {
-        return $this->belongsTo('app\team', 'team', 'team_id');
+        return $this->belongsTo('App\team', 'team', 'team_id');
     }
     
 

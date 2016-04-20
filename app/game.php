@@ -8,6 +8,7 @@ class game extends Model
 {
     protected $table = 'game';
     protected $primaryKey = 'gsis_id';
+    
     public function home_team() {
         return $this->belongsTo('App\team', 'home_team', 'team_id');
     }
