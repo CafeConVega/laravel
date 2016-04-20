@@ -9,7 +9,7 @@ class play_player extends Model
     protected $table = 'play_player';
     
     public function play() {
-        return $this->belongsTo('app\play', 'play_id', 'play_id');
+        return $this->belongsTo('App\play', 'play_id', 'play_id');
     }
     
     public function player() {

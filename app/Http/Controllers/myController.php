@@ -73,12 +73,24 @@ class myController extends Controller
     }  
     
     public function gameJSON($id) {
-        $returnedObject = new \stdClass;
         $game = game::find($id);
         $plays = array();
-        foreach($game->play_player as $play_player) {
-            $plays[] = $play_player;
+        foreach($game->plays as $play) {
+//            $plays[] = $play;
+            $obj = new \stdClass;
+            $obj = $play;
+            $obj->player = $play->player;
+//            $play->player
+            $plays[] = $obj;
         }
+/*        foreach($game->play_player as $play_player) {
+            $returnedObject = new \stdClass;
+            $returnedObject->player = $play_player;
+            $returnedObject->player->plays = $play_player->plays;
+//            $plays[] = ["player" => $play_player, "plays" => $play_player->plays];
+                  
+        }
+        */
         return response()->json($plays);
     }
 
