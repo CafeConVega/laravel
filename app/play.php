@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class play extends Model
 {
     protected $table = 'play';
-     protected $primaryKey = 'play_id';
+    protected $primaryKey = 'play_id';
+    
     public function agg_play() {
         return $this->hasOne('App\agg_play', 'play_id', 'play_id');
     } 

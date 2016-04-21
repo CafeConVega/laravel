@@ -82,7 +82,9 @@ class myController extends Controller
             $obj = $play;
             $obj->player = $play->player;
 //            $play->player
-            $play[] = $obj;
+            $plays[] = $obj;
+            
+            
         }
 /*        foreach($game->play_player as $play_player) {
             $returnedObject = new \stdClass;
