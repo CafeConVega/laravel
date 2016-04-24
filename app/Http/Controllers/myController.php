@@ -106,8 +106,8 @@ class myController extends Controller
         
         foreach($gameid->play_player as $play_player) {
             $returnedObject = new \stdClass;
-            $returnedObject->player = $play_player;
-            $returnedObject->player->plays = $play_player->plays;
+            $returnedObject = $play_player;
+//            $returnedObject->player->plays = $play_player->plays;
 //            $play_players[] = ["player" => $play_player, "plays" => $play_player->plays];
             $play_players[] = $returnedObject;
         }
