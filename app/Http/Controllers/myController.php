@@ -110,7 +110,7 @@ class myController extends Controller
 //            $play_players[] = ["player" => $play_player, "plays" => $play_player->plays];
             $play_players[] = $returnedObject;
         }
-        $alldata[] =  ["game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players];
+        $alldata =  ["game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players];
         return response()->json($alldata);
     }
 
