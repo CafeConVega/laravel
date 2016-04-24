@@ -80,14 +80,14 @@ class myController extends Controller
         $plays = array();
         $play_players = array();
         
-        foreach($gameid->game as $games) {
-//            $plays[] = $play;
-            $obj = new \stdClass;
-            $obj = $games;
-//            $obj->player = $play->player;
-//            $play->player
-            $game_data[] = $obj;    
-        } 
+//        foreach($gameid->game as $games) {
+////            $plays[] = $play;
+//            $obj = new \stdClass;
+//            $obj = $games;
+////            $obj->player = $play->player;
+////            $play->player
+//            $game_data[] = $obj;    
+//        } 
         
         foreach($gameid->play as $play) {
 //            $plays[] = $play;
