@@ -75,26 +75,26 @@ class myController extends Controller
     
     public function gameJSON($id) {
         $game = game::find($id);
+        $alldata = array();
         $plays = array();
+        $play_players = array();
         foreach($game->play as $play) {
 //            $plays[] = $play;
             $obj = new \stdClass;
             $obj = $play;
             $obj->player = $play->player;
 //            $play->player
-            $plays[] = $obj;
-            
-            
+            $plays[] = $obj;    
         }
-/*        foreach($game->play_player as $play_player) {
+        foreach($game->play_player as $play_player) {
             $returnedObject = new \stdClass;
             $returnedObject->player = $play_player;
             $returnedObject->player->plays = $play_player->plays;
-//            $plays[] = ["player" => $play_player, "plays" => $play_player->plays];
+            $play_players[] = ["player" => $play_player, "plays" => $play_player->plays];
                   
         }
-        */
-        return response()->json($plays);
+        $alldata = array_merge($plays->toArray(), $play_players->toArray());
+        return response()->json($alldata);
     }
 
 
