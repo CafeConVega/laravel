@@ -79,16 +79,17 @@ class myController extends Controller
         $game_data = array();
         $drives = array();
         $plays = array();
+        $players = array();
         $play_players = array();
         
-//        foreach($gameid->game as $games) {
-////            $plays[] = $play;
-//            $obj = new \stdClass;
-//            $obj = $games;
-////            $obj->player = $play->player;
-////            $play->player
-//            $game_data[] = $obj;    
-//        } 
+        foreach($gameid->game as $games) {
+//            $plays[] = $play;
+            $obj = new \stdClass;
+            $obj = $games;
+//            $obj->player = $play->player;
+//            $play->player
+            $game_data[] = $obj;    
+        } 
         
         foreach($gameid->play as $play) {
 //            $plays[] = $play;
@@ -107,11 +108,12 @@ class myController extends Controller
         foreach($gameid->play_player as $play_player) {
             $returnedObject = new \stdClass;
             $returnedObject = $play_player;
+            $players = $play_player->('player_id');
 //            $returnedObject->player->plays = $play_player->plays;
 //            $play_players[] = ["player" => $play_player, "plays" => $play_player->plays];
             $play_players[] = $returnedObject;
         }
-        $alldata[] =  ["game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players];
+        $alldata[] =  ["game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => %players];
         return response()->json($alldata);
     }
 
