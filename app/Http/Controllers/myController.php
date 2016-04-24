@@ -93,7 +93,7 @@ class myController extends Controller
             $play_players[] = ["player" => $play_player, "plays" => $play_player->plays];
         }
         $alldata = array_merge($plays, $play_players);
-        return response()->json($play_plays);
+        return response()->json($play_players);
     }
 
 
