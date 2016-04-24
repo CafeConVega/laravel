@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class game extends Model
 {
     protected $table = 'game';
-    protected $primaryKey = 'gamekey';
+    protected $primaryKey = 'gsis_id';
     
     public function home_team() {
         return $this->belongsTo('App\team', 'home_team', 'team_id');
