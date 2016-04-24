@@ -77,6 +77,7 @@ class myController extends Controller
         $gameid = game::find($id);
         $alldata = array();
         $game_data = array();
+        $drives = array();
         $plays = array();
         $play_players = array();
         
@@ -97,6 +98,12 @@ class myController extends Controller
 //            $play->player
             $plays[] = $obj;    
         }
+        foreach($gameid->drive as $drive) {
+            $obj = new \stdClass;
+            $obj = $drive;
+            $drives[] = $obj;    
+        }
+        
         foreach($gameid->play_player as $play_player) {
             $returnedObject = new \stdClass;
             $returnedObject->player = $play_player;
