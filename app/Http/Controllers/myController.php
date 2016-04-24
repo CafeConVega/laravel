@@ -90,10 +90,11 @@ class myController extends Controller
             $returnedObject = new \stdClass;
             $returnedObject->player = $play_player;
             $returnedObject->player->plays = $play_player->plays;
-            $play_players[] = ["player" => $play_player, "plays" => $play_player->plays];
+//            $play_players[] = ["player" => $play_player, "plays" => $play_player->plays];
+            $play_players[] = $returnedObject;
         }
-        $alldata = array_merge($plays, $play_players);
-        return response()->json($play_players);
+        $alldata[] =  ["plays" =>$plays, "play_player" => $play_players];
+        return response()->json($alldata);
     }
 
 
