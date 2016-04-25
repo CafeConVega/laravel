@@ -152,13 +152,13 @@ class myController extends Controller
             $play_players[] = $obj;
         }
         
-            foreach($players_id->player as $player) {
-            $obj = new \stdClass;
-            $obj = $player;
-            $players[] = $obj;
-        }
+//        foreach($players_id->player as $player) {
+//            $obj = new \stdClass;
+//            $obj = $player;
+//            $players[] = $obj;
+//        }
         
-        $alldata =  ["game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players];
+        $alldata =  ["game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $game_id];
         return response()->json($alldata);
     }
 
