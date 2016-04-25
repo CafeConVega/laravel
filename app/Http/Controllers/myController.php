@@ -120,14 +120,8 @@ class myController extends Controller
         $game_data = array();
         $drives = array();
         $plays = array();
-        $players = play_player::where(‘game_id’, ‘=‘, $game_id)->get('player_id');
+        $players = play_player('player_id')::where(‘game_id’, ‘=‘, $game_id)->get();
         $play_players = array();
-        
-//        foreach($gameid->game as $game) {
-//            $obj = new \stdClass;
-//            $obj = $game;
-//            $game_data[] = $obj;    
-//        } 
         
         foreach($gameid->play as $play) {
 //            $plays[] = $play;
