@@ -123,7 +123,7 @@ class myController extends Controller
         $drives = array();
         $plays = array();
         $players = array();
-        $players_id = play_player::select('player_id')->groupBy('player_id')->where('gsis_id', '=', $id)->get()->array();
+        $players_id = play_player::select('player_id')->groupBy('player_id')->where('gsis_id', '=', $id)->get();
         $play_players = array();
         
 //        foreach($game_id->game as $game) {
