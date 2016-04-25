@@ -122,7 +122,7 @@ class myController extends Controller
         $game_data = array();
         $drives = array();
         $plays = array();
-        $players_id = play_player::select('player_id')->groupBy('player_id')->where('gsis_id', '=', $id)->get();
+        $players_id[] = play_player::select('player_id')->groupBy('player_id')->where('gsis_id', '=', $id)->get();
         $players_data = player::whereIn('player_id', $players_id)->get();
         
         
