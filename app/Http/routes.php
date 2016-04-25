@@ -29,7 +29,7 @@ Route::get('json', 'myController@teamsJson')->name('tjson');
 
 Route::get('game/{id}', 'myController@gameJSON')->name('gamejson');
 
-Route::get('gametest/{id}', 'myController@gameJSONtest')->name('gamejson');
+Route::get('gametest/{id}', 'myController@gameJSONtest')->name('gamejsontest');
 
 
 
