@@ -119,21 +119,14 @@ class myController extends Controller
     public function gameJSONtest($id) {
         $game_id = game::find($id);
         $alldata = array();
-        $game_data = array();
         $drives = array();
         $plays = array();
-        $players_id = play_player::select('player_id')->where('gsis_id', '=', $id)->distinct()->get();
-        $players_data = player::whereIn('player_id', $players_id)->get();
-        
-        
         $players = array();
         $play_players = array();
         
-//        foreach($game_id->game as $game) {
-//            $obj = new \stdClass;
-//            $obj = $game;
-//            $game_data[] = $obj;    
-//        } 
+        $game_data = game::find($id);
+        $players_id = play_player::select('player_id')->where('gsis_id', '=', $id)->distinct()->get();
+        $players_data = player::whereIn('player_id', $players_id)->get();
         
         foreach($game_id->play as $play) {
             $obj = new \stdClass;
@@ -149,19 +142,10 @@ class myController extends Controller
         foreach($game_id->play_player as $play_player) {
             $obj = new \stdClass;
             $obj = $play_player;
-//            $players = $play_player.'player_id';
-//            $returnedObject->player->plays = $play_player->plays;
-//            $play_players[] = ["player" => $play_player, "plays" => $play_player->plays];
             $play_players[] = $obj;
         }
         
-//        foreach($players_id->player as $player) {
-//            $obj = new \stdClass;
-//            $obj = $player;
-//            $players[] = $obj;
-//        }
-        
-        $alldata =  ["game" =>$game_id, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players_data];
+        $alldata =  ["game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players_data];
         
         return response()->json($alldata);
     }
