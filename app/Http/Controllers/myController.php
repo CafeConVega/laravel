@@ -43,7 +43,7 @@ class myController extends Controller
     	$question->save(); 
     	$questions = Question::all();
     	return view('frontend.questions', ["questions" => $questions]);
-    }
+}
 
     
     public function newTeam(Request $request) {
@@ -61,12 +61,12 @@ class myController extends Controller
         $team->save();
         $teams = nflteams::all();
         return view('frontend.nfl', ["teams" => $teams]);
-    }
+ }
     
     public function allTeams() {
         $teams = nflteams::all();
         return view('frontend.nfl', ["teams" => $teams]);
-    }
+}
     
      public function teamsJson() {
         $teams = nflteams::all();
@@ -120,8 +120,14 @@ class myController extends Controller
         $game_data = array();
         $drives = array();
         $plays = array();
-        $players = play_player('player_id')::where(‘gsis_id’, ‘=‘, $gameid)->get();
+        $players = array();
         $play_players = array();
+        
+        foreach($gameid->game as $game) {
+            $obj = new \stdClass;
+            $obj = $game;
+            $game_data[] = $obj;    
+        } 
         
         foreach($gameid->play as $play) {
 //            $plays[] = $play;
@@ -131,7 +137,6 @@ class myController extends Controller
 //            $play->player
             $plays[] = $obj;    
         }
-        
         foreach($gameid->drive as $drive) {
             $obj = new \stdClass;
             $obj = $drive;
@@ -146,19 +151,6 @@ class myController extends Controller
 //            $play_players[] = ["player" => $play_player, "plays" => $play_player->plays];
             $play_players[] = $returnedObject;
         }
-        
-        
-        foreach($gameid->play_player as $play_player) {
-            $returnedObject = new \stdClass;
-            $returnedObject = $play_player;
-//            $players = $play_player.'player_id';
-//            $returnedObject->player->plays = $play_player->plays;
-//            $play_players[] = ["player" => $play_player, "plays" => $play_player->plays];
-            $play_players[] = $returnedObject;
-        }
-        
-        
-        
         $alldata =  ["game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players];
         return response()->json($alldata);
     }
