@@ -121,7 +121,7 @@ class myController extends Controller
         $game_data = array();
         $drives = array();
         $plays = array();
-        $players = play_player::where('gsis_id', '=', $id)->get();
+        $players = play_player('player_id')::where('gsis_id', '=', $id)->get();
         $play_players = array();
         
 //        foreach($gameid->game as $game) {
