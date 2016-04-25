@@ -12,6 +12,7 @@ use App\nflteams;
 use App\game;
 use App\play;
 use App\play_player;
+use App\player;
 
 class myController extends Controller
 {
