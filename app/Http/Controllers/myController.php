@@ -122,8 +122,9 @@ class myController extends Controller
         $game_data = array();
         $drives = array();
         $plays = array();
-        $players = array();
         $players_id = play_player::select('player_id')->groupBy('player_id')->where('gsis_id', '=', $id)->get();
+        $players_data = player::find($players_id);
+        $players = array();
         $play_players = array();
         
 //        foreach($game_id->game as $game) {
@@ -152,7 +153,7 @@ class myController extends Controller
             $play_players[] = $obj;
         }
         
-        foreach($players_id->player as $player) {
+        foreach($players_data->player as $player) {
             $obj = new \stdClass;
             $obj = $player;
             $players[] = $obj;
