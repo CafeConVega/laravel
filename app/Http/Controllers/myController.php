@@ -123,7 +123,7 @@ class myController extends Controller
         $drives = array();
         $plays = array();
         $players = array();
-        $players_id = play_player::select('player_id')->groupBy('player_id')->where('gsis_id', '=', $id)->get();
+        $players_id = play_player::select('player_id')->groupBy('player_id')->where('gsis_id', '=', $id)->get()->array();
         $play_players = array();
         
 //        foreach($game_id->game as $game) {
@@ -152,13 +152,13 @@ class myController extends Controller
             $play_players[] = $obj;
         }
         
-//        foreach($players_id->player as $player) {
-//            $obj = new \stdClass;
-//            $obj = $player;
-//            $players[] = $obj;
-//        }
+        foreach($players_id->player as $player) {
+            $obj = new \stdClass;
+            $obj = $player;
+            $players[] = $obj;
+        }
         
-        $alldata =  ["game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $game_id];
+        $alldata =  ["game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players];
         return response()->json($alldata);
     }
 
