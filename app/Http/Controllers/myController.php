@@ -124,7 +124,7 @@ class myController extends Controller
         
         $home_team = $game_data->home_team;
         $away_team = $game_data->away_team;
-        $teams = array($home_team, $away_team);
+        $teams = array("home" => $home_team, "away" => $away_team);
         $teams_data = team_plus::whereIn('team_id', $teams)->get();
 
         
