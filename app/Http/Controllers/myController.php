@@ -118,7 +118,7 @@ class myController extends Controller
         $play_players = array();
         $home_team = $game_data->home_team;
         $away_team = $game_data->away_team;
-        $teams = collect([$home_team, $away_team])->all();
+        $teams = array([$home_team, $away_team]);
         
         $game_data = game::find($id);
         $players_id = play_player::select('player_id')->where('gsis_id', '=', $id)->distinct()->get();
