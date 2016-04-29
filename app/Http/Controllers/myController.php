@@ -122,7 +122,7 @@ class myController extends Controller
         $players_id = play_player::select('player_id')->where('gsis_id', '=', $id)->distinct()->get();
         $players_data = player::whereIn('player_id', $players_id)->get();
         $teams = $game_data->home_team;
-        $teams = $game_data->home_team;
+        $teams = $game_data->away_team;
         
         foreach($game_id->play as $play) {
             $obj = new \stdClass;
