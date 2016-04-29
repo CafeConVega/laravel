@@ -124,6 +124,11 @@ class myController extends Controller
         $teams = $game_data->home_team;
         $teams = $game_data->away_team;
         
+        $teams_obj = new \stdClass;
+        $teams_obj = $game_data->home_team;
+        $teams_obj = $game_data->away_team;
+        $teams = $teams_obj;
+        
         foreach($game_id->play as $play) {
             $obj = new \stdClass;
             $obj = $play;
@@ -141,7 +146,7 @@ class myController extends Controller
             $play_players[] = $obj;
         }
         
-        $alldata =  ["game" =>$game_data, "teams" => $teams,"drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players_data];
+        $alldata =  ["game" =>$game_data, "teams" => $teams, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players_data];
         
         return response()->json($alldata);
     }
