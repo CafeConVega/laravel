@@ -124,7 +124,7 @@ class myController extends Controller
         $home_team = $game_data->home_team;
         $away_team = $game_data->away_team;
         $teams = array($home_team, $away_team);
-        $teams_data = team_plus::whereIn('player_id', $players_id)->get();
+        $teams_data = team_plus::whereIn('team_id', $teams)->get();
 
         
 //        $teams_obj = new \stdClass;
@@ -149,7 +149,7 @@ class myController extends Controller
             $play_players[] = $obj;
         }
         
-        $alldata =  ["teams" => $teams, "game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players_data];
+        $alldata =  ["teams" => $teams_data, "game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players_data];
         
         return response()->json($alldata);
     }
