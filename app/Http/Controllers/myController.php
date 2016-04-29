@@ -121,7 +121,8 @@ class myController extends Controller
         $game_data = game::find($id);
         $players_id = play_player::select('player_id')->where('gsis_id', '=', $id)->distinct()->get();
         $players_data = player::whereIn('player_id', $players_id)->get();
-        $home_team = $game_data->home_team;
+        $teams = $game_data->home_team;
+        $teams = $game_data->home_team;
         
         foreach($game_id->play as $play) {
             $obj = new \stdClass;
@@ -140,7 +141,7 @@ class myController extends Controller
             $play_players[] = $obj;
         }
         
-        $alldata =  ["game" =>$game_data, "teams" => $home_team,"drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players_data];
+        $alldata =  ["game" =>$game_data, "teams" => $teams,"drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players_data];
         
         return response()->json($alldata);
     }
