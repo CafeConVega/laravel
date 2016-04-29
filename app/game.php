@@ -17,6 +17,14 @@ class game extends Model
         return $this->belongsTo('App\team', 'away_team', 'team_id');
     }
     
+    public function home_teamPlus() {
+        return $this->belongsTo('App\team_plus', 'home_team', 'team_id');
+    }
+    
+    public function away_teamPlus() {
+        return $this->belongsTo('App\team_plus', 'away_team', 'team_id');
+    }
+    
     public function drive() {
         return $this->hasMany('App\drive', 'gsis_id', 'gsis_id');
     }

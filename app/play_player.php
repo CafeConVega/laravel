@@ -28,6 +28,10 @@ class play_player extends Model
         return $this->belongsTo('App\team', 'team', 'team_id');
     }
     
+    public function teamPlus() {
+        return $this->belongsTo('App\team_plus', 'team', 'team_id');
+    }
+    
 
 
 }

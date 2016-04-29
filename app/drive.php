@@ -12,6 +12,10 @@ class drive extends Model
         return $this->belongsTo('App\team', 'pos_team', 'team_id');
     }
     
+     public function teamPlus() {
+        return $this->belongsTo('App\team_plus', 'pos_team', 'team_id');
+    }
+    
       public function game() {
         return $this->belongsTo('App\game', 'gsis_id', 'gsis_id');
     }

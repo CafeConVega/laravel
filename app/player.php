@@ -13,6 +13,10 @@ class player extends Model
         return $this->belongsTo('App\team', 'team', 'team_id');
     }
     
+    public function teamPlus() {
+        return $this->belongsTo('App\team_plus', 'team', 'team_id');
+    }
+    
     public function play_player() {
         return $this->hasMany('App\play_player', 'player_id', 'player_id');
     }
