@@ -13,6 +13,7 @@ use App\game;
 use App\play;
 use App\play_player;
 use App\player;
+use App\team_plus;
 
 class myController extends Controller
 {
