@@ -116,13 +116,14 @@ class myController extends Controller
         $plays = array();
         $players = array();
         $play_players = array();
-        $home_team = $game_data->home_team;
-        $away_team = $game_data->away_team;
-        $teams = array([$home_team, $away_team]);
         
         $game_data = game::find($id);
         $players_id = play_player::select('player_id')->where('gsis_id', '=', $id)->distinct()->get();
         $players_data = player::whereIn('player_id', $players_id)->get();
+        
+        $home_team = $game_data->home_team;
+        $away_team = $game_data->away_team;
+        $teams = array([$home_team, $away_team]);
 
         
 //        $teams_obj = new \stdClass;
