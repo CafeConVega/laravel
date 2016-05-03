@@ -67,7 +67,7 @@ class myController extends Controller
  }
     
     public function allTeams() {
-        $teams = team_plus::all()->get();
+        $teams = team_plus::all();
         return view('select_game', ["teams" => $teams]);
 }
     
