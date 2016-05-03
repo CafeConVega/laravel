@@ -213,6 +213,45 @@ public function getGame($home, $year, $away) {
         
     $game_id = $game[0]->gsis_id;
     
+    function gameJsonData($id) {
+       $game_id = game::find($id);
+        $alldata = array();
+        $drives = array();
+        $plays = array();
+        $players = array();
+        $play_players = array();
+        
+        $game_data = game::find($id);
+        $players_id = play_player::select('player_id')->where('gsis_id', '=', $id)->distinct()->get();
+        $players_data = player::whereIn('player_id', $players_id)->get();
+        
+        $home_team = $game_data->home_team;
+        $away_team = $game_data->away_team;
+        $teams = array($away_team, $home_team);
+        $teams_data = team_plus::whereIn('team_id', $teams)->get();
+        
+        foreach($game_id->play as $play) {
+            $obj = new \stdClass;
+            $obj = $play;
+            $plays[] = $obj;    
+        }
+        foreach($game_id->drive as $drive) {
+            $obj = new \stdClass;
+            $obj = $drive;
+            $drives[] = $obj;    
+        }
+        
+        foreach($game_id->play_player as $play_player) {
+            $obj = new \stdClass;
+            $obj = $play_player;
+            $play_players[] = $obj;
+        }
+        
+        $alldata =  ["teams" => $teams_data, "game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players_data];
+        
+        return $alldata;
+    }
+    
     $data = gameJsonData($game_id);
     
     return response()->json($data);
