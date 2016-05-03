@@ -8,6 +8,7 @@ class team extends Model
 {
     protected $table = 'team';
      protected $primaryKey = 'team_id';
+    public $incrementing = false;
     
     public function home_team() {
         return $this->hasMany('App\game', 'home_team', 'team_id');
