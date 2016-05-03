@@ -175,7 +175,7 @@ public function allTeams() {
         
         $game = game::where("away_team", "like", "%".$away."%")
                     ->where("home_team", "like", "%".$home."%")
-                    ->where("season", "=", $year)->get();
+                    ->where("season_year", "=", $year)->get();
         
         $game_id = $game->gsis_id;
         
