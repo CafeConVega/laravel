@@ -32,6 +32,7 @@ Route::get('game/{id}', 'myController@gameJSON')->name('gamejson');
 Route::get('gametest/{id}', 'myController@gameJSONtest')->name('gamejsontest');
 
 Route::get('select_game', 'myController@allTeams');
+Route::post('select_game', 'myController@filterTeams');
 
 
 

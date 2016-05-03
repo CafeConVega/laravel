@@ -8,6 +8,7 @@ class player extends Model
 {
     protected $table = 'player';
     protected $primaryKey = 'player_id';
+    public incrementing = false;
     
      public function team() {
         return $this->belongsTo('App\team', 'team', 'team_id');
