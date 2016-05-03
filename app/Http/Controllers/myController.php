@@ -46,10 +46,9 @@ class myController extends Controller
     	$question->save(); 
     	$questions = Question::all();
     	return view('frontend.questions', ["questions" => $questions]);
-}
+}   
 
-    
-    public function newTeam(Request $request) {
+public function newTeam(Request $request) {
     	$team = new nflteams;
         
         $team->city = $request->input('city');
@@ -160,6 +159,28 @@ public function allTeams() {
         return response()->json($alldata);
     }
 
+    public function getGame($team, $year, $opponent) {
+        $awayCheck = game::where("away", "like","%".$team."%");
+        $homeCheck = game::where("home", "like","%".$team."%");
+        
+        if($awayCheck){
+            $away = $team;
+            $home = $opponent;
+        }
+        
+        if($homeCheck){
+            $away = $opponent;
+            $home = $team;
+        }
+        
+        $game = game::where("away", "like", "%".$away."%")
+                    ->where("home", "like", "%".$home."%")
+                    ->where("season", "=", $year)->get();
+        
+        $game_id = $game->gsis_id;
+        
+        return response()->json($game_id);
+ } 
 
     
 
