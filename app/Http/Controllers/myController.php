@@ -177,9 +177,11 @@ public function allTeams() {
                     ->where("home_team", "like", "%".$home."%")
                     ->where("season_year", "=", $year)->get();
         
-        $game_id = $game->gsis_id;
+//        $game_id = $game->gsis_id;
+//        
+//        return response()->json($game_id);
         
-        return response()->json($game_id);
+        var_dump($game);
  } 
 
     
