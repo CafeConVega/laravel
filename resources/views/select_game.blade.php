@@ -7,7 +7,7 @@
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
        @foreach($teams as $teamss)
-            <li>{{ $teamss->city." ".$teamss->name}}</li>
+            <li><a>{{ $teamss->city." ".$teamss->name}}</a></li>
        @endforeach
   </ul>
 </div>
