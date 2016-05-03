@@ -81,7 +81,7 @@ public function allTeams() {
     }  
     
     public function gameJSON($id) {
-        $game_id = game::find($id);
+       $game_id = game::find($id);
         $alldata = array();
         $drives = array();
         $plays = array();
@@ -91,6 +91,11 @@ public function allTeams() {
         $game_data = game::find($id);
         $players_id = play_player::select('player_id')->where('gsis_id', '=', $id)->distinct()->get();
         $players_data = player::whereIn('player_id', $players_id)->get();
+        
+        $home_team = $game_data->home_team;
+        $away_team = $game_data->away_team;
+        $teams = array($away_team, $home_team);
+        $teams_data = team_plus::whereIn('team_id', $teams)->get();
         
         foreach($game_id->play as $play) {
             $obj = new \stdClass;
@@ -109,7 +114,7 @@ public function allTeams() {
             $play_players[] = $obj;
         }
         
-        $alldata =  ["game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players_data];
+        $alldata =  ["teams" => $teams_data, "game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players_data];
         
         return response()->json($alldata);
     }
@@ -158,8 +163,71 @@ public function allTeams() {
         
         return response()->json($alldata);
     }
+    
+     public function gameJsonData($id) {
+       $game_id = game::find($id);
+        $alldata = array();
+        $drives = array();
+        $plays = array();
+        $players = array();
+        $play_players = array();
+        
+        $game_data = game::find($id);
+        $players_id = play_player::select('player_id')->where('gsis_id', '=', $id)->distinct()->get();
+        $players_data = player::whereIn('player_id', $players_id)->get();
+        
+        $home_team = $game_data->home_team;
+        $away_team = $game_data->away_team;
+        $teams = array($away_team, $home_team);
+        $teams_data = team_plus::whereIn('team_id', $teams)->get();
+        
+        foreach($game_id->play as $play) {
+            $obj = new \stdClass;
+            $obj = $play;
+            $plays[] = $obj;    
+        }
+        foreach($game_id->drive as $drive) {
+            $obj = new \stdClass;
+            $obj = $drive;
+            $drives[] = $obj;    
+        }
+        
+        foreach($game_id->play_player as $play_player) {
+            $obj = new \stdClass;
+            $obj = $play_player;
+            $play_players[] = $obj;
+        }
+        
+        $alldata =  ["teams" => $teams_data, "game" =>$game_data, "drives" =>$drives, "plays" =>$plays, "play_player" => $play_players, "players" => $players_data];
+        
+        return $alldata;
+    }
+    
+    
 
-    public function getGame($team, $year, $opponent) {
+public function getGame($home, $year, $away) {
+        
+    $game = game::where("away_team", "=", $away)
+                    ->where("home_team", "=", $home)
+                    ->where("season_year", "=", $year)->get();
+        
+    $game_id = $game[0]->gsis_id;
+    
+    $data = gameJsonData($game_id);
+    
+    return response()->json($data);
+        
+//        var_dump($game);
+ } 
+
+    
+public function getGameBU($team, $year, $opponent) {
+        
+        $away_games = game::where("away_team", "=",$team)->where("home_team", "=", $opponent)->get();
+        $home_games = game::where("home_team", "=",$team)->where("away_team", "=", $opponent)-get();
+        
+        $all_games = array_merge($away_games, $home_games);
+        
         $awayCheck = game::where("away_team", "like","%".$team."%");
         $homeCheck = game::where("home_team", "like","%".$team."%");
         
@@ -183,7 +251,6 @@ public function allTeams() {
         
 //        var_dump($game);
  } 
-
     
 
 }
