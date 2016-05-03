@@ -160,8 +160,8 @@ public function allTeams() {
     }
 
     public function getGame($team, $year, $opponent) {
-        $awayCheck = game::where("away", "like","%".$team."%");
-        $homeCheck = game::where("home", "like","%".$team."%");
+        $awayCheck = game::where("away_team", "like","%".$team."%");
+        $homeCheck = game::where("home_team", "like","%".$team."%");
         
         if($awayCheck){
             $away = $team;
@@ -173,8 +173,8 @@ public function allTeams() {
             $home = $team;
         }
         
-        $game = game::where("away", "like", "%".$away."%")
-                    ->where("home", "like", "%".$home."%")
+        $game = game::where("away_team", "like", "%".$away."%")
+                    ->where("home_team", "like", "%".$home."%")
                     ->where("season", "=", $year)->get();
         
         $game_id = $game->gsis_id;
