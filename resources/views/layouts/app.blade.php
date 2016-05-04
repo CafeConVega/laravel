@@ -6,16 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Laravel</title>
+    
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <script type="text/javascript" src="js/libs/stupidtable.js"></script>
+    <script type="text/javascript" src="js/data_processing/data_munching.js"></script>
+    <script type="text/javascript" src="js/grahics/draw.js"></script>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+     <link href='https://fonts.googleapis.com/css?family=Graduate|Roboto' rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet" type="text/css" />
     <link href="css/buttons.css" rel="stylesheet" type="text/css" />
-    <link href='https://fonts.googleapis.com/css?family=Graduate|Roboto' rel='stylesheet' type='text/css'>
+   
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
@@ -79,12 +85,9 @@
 
     <!-- JavaScripts -->
 <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
      <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/libs/stupidtable.js"></script>
-    <script type="text/javascript" src="js/data_processing/data_munching.js"></script>
-    <script type="text/javascript" src="js/grahics/draw.js"></script>
+    
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>
