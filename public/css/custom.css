@@ -9,10 +9,11 @@ body{
     align-items: center;
     align-self: center;
     justify-content: center;
+    margin: auto;
 }
 
 .btn {
-    margin: 1em;
+    padding: 1em;
 }
 
 h1,

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="searchbuttons row">       
+<div class="searchbuttons row container">       
 <div class="dropdown hometeam">
   <button id="button_home_team" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Home Team<span class="caret"></span></button>
   <ul class="dropdown-menu">
@@ -215,8 +215,8 @@ d3.select("#searchbutton").on("click", function () {
     if(home && year && away) {
         d3.selectAll("svg").remove();
         d3.selectAll("table").remove();
-        d3.selectAll("#away_name_label").remove();
-        d3.selectAll("#home_name_label").remove();
+        d3.selectAll("#away_name_label").text(" ");
+        d3.selectAll("#home_name_label").text(" ");
         init(home, year, away);
         d3.select("main").classed("hidden", false);
     } else{
