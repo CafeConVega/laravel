@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/oldwelcome', function () {
+    return view('welcome');
+});
+
 Route::get('hello', 'myController@index')->name('sayhello');
 Route::post('hello', 'myController@gotWhatever')->name('saidhello');
 
@@ -31,9 +35,11 @@ Route::get('game/{id}', 'myController@gameJSON')->name('gamejson');
 
 Route::get('gametest/{id}', 'myController@gameJSONtest')->name('gamejsontest');
 
-Route::get('select_game', 'myController@allTeams');
+
+
+Route::get('select_game', 'myController@buttonData');
 //Route::get('select_game', 'myController@allYears');
-Route::post('select_game', 'myController@filterTeams');
+//Route::post('select_game', 'myController@filterTeams');
 
 //Route::get('gamein/{team}/{year}/{opponent}', 'myController@getGame')->name('gameGet');
 
