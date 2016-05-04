@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container row">       
+<div class="row">       
 <div class="dropdown hometeam">
-  <button id="home_team" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-  <span class="caret">Home Team</span></button>
+  <button id="home_team" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Home Team<span class="caret"></span></button>
   <ul class="dropdown-menu">
        @foreach($teams as $teamss)
             <li data = "{{ $teamss->short}}" ><a>{{ $teamss->city." ".$teamss->name}}</a></li>
