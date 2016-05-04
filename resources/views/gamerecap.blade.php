@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="searchbuttons row container">       
-<div class="dropdown hometeam col-md-3">
+<div class="dropdown hometeam">
   <button id="button_home_team" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Home Team<span class="caret"></span></button>
   <ul class="dropdown-menu">
        @foreach($teams as $teamss)
@@ -10,7 +10,7 @@
        @endforeach
   </ul>
 </div>
-<div class="dropdown year ">
+<div class="dropdown year">
   <button id="button_year" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Year
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
@@ -19,7 +19,7 @@
        @endforeach
   </ul>
 </div>
-<div class="dropdown awayteam ">
+<div class="dropdown awayteam">
   <button id="button_away_team" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Away Team
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
@@ -28,7 +28,7 @@
        @endforeach
   </ul>
 </div>
-<div >
+<div>
     <button id="searchbutton" class="btn btn-success" type="button">Go</button>
 </div>
 </div>
