@@ -68,13 +68,14 @@ public function newTeam(Request $request) {
 public function allTeams() {
         $teams = team_plus::all()->get();
         $years = game::select('season_year')->distinct()-get();
-        return view('select_game', ["teams" => $teams, "years" => $years]);
+        $all_data = ["teams" => $teams, "years" => $years]
+        return view('select_game', $all_data);
 }
     
-public function allYears() {
-        $years = game::select('season_year')->distinct()-get();
-        return view('select_game', ["years" => $years]);
-}
+//public function allYears() {
+//        $years = game::select('season_year')->distinct()-get();
+//        return view('select_game', ["years" => $years]);
+//}
     
 //public function filterTeams(Request $request) {
 //        $teamsFilter = $request->;
