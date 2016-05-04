@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">       
-<div class="dropdown">
+<div class="container col-md-3">       
+<div class="dropdown hometeam">
   <button id="home_team" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Home Team
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
@@ -11,7 +11,7 @@
        @endforeach
   </ul>
 </div>
-<div class="dropdown">
+<div class="dropdown year">
   <button id="year" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Year
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
@@ -20,7 +20,7 @@
        @endforeach
   </ul>
 </div>
-<div class="dropdown">
+<div class="dropdown awayteam">
   <button id="away_team" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Away Team
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
