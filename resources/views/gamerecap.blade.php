@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="searchbuttons row container position center">       
-<div class="dropdown hometeam">
+<div class="searchbuttons row container">       
+<div class="dropdown hometeam col-md-3">
   <button id="button_home_team" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Home Team<span class="caret"></span></button>
   <ul class="dropdown-menu">
        @foreach($teams as $teamss)
@@ -10,7 +10,7 @@
        @endforeach
   </ul>
 </div>
-<div class="dropdown year">
+<div class="dropdown year col-md-3">
   <button id="button_year" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Year
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
@@ -19,7 +19,7 @@
        @endforeach
   </ul>
 </div>
-<div class="dropdown awayteam">
+<div class="dropdown awayteam col-md-3">
   <button id="button_away_team" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Away Team
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
@@ -28,7 +28,9 @@
        @endforeach
   </ul>
 </div>
-<button id="searchbutton" class="btn btn-success" type="button">Go</button>
+<div col-md-3>
+    <button id="searchbutton" class="btn btn-success" type="button">Go</button>
+</div>
 </div>
 <main class="hidden">
 <h1>GAME RECAP</h1>
