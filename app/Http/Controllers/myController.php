@@ -67,7 +67,9 @@ public function newTeam(Request $request) {
     
 public function allTeams() {
         $teams = team_plus::all()->get();
-        return view('select_game', ["teams" => $teams]);
+        $game_data = game::all()->get();
+        $years = game::select('season_year')->distinct()-get();
+        return view('select_game', ["teams" => $teams, "years" => $years]);
 }
     
 //public function filterTeams(Request $request) {
@@ -164,7 +166,7 @@ public function allTeams() {
         return response()->json($alldata);
     }
     
-     public function gameJsonData($id) {
+    public function gameJsonData($id) {
        $game_id = game::find($id);
         $alldata = array();
         $drives = array();
