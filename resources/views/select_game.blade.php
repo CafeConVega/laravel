@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container col-md-3">       
+<div class="container row">       
 <div class="dropdown hometeam">
   <button id="home_team" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Home Team
   <span class="caret"></span></button>
