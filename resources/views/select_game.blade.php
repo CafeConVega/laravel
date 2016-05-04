@@ -16,7 +16,7 @@
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
        @foreach($years as $yearss)
-            <li data = ".{{ $years->season_year}}." ><a>{{ $yearss->season_year}}</a></li>
+            <li data = ".{{ $years}}." ><a>{{ $yearss }}</a></li>
        @endforeach
   </ul>
 </div>
