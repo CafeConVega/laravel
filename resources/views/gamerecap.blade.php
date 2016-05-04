@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">       
+<div class="searchbuttons row">       
 <div class="dropdown hometeam">
   <button id="button_home_team" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Home Team<span class="caret"></span></button>
   <ul class="dropdown-menu">
@@ -193,7 +193,7 @@
 </main>
 
 <script>
-    var home, year, away;
+var home, year, away;
 d3.selectAll(".home_option").on("click", function () {
     home = d3.select(this).attr("data");
     d3.select("#button_home_team").text(home);
@@ -213,6 +213,8 @@ d3.selectAll(".season_option").on("click", function () {
     
 d3.select("#searchbutton").on("click", function () {
     if(home && year && away) {
+        d3.selectAll("svg").remove();
+        d3.selectAll("table").remove();
         init(home, year, away);
         d3.select("main").classed("hidden", false);
     } else{

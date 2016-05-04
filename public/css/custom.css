@@ -2,6 +2,12 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+.searchbuttons{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
 h1,
 h2 {
     font-family: 'Graduate', cursive;
