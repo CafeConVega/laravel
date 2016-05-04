@@ -57,8 +57,6 @@ d3.select("#searchbutton").on("click", function () {
     } 
 });
     
-function init(home, year, away){
-    
 var fullwidth = Math.round(window.innerWidth * .75);
 var fullheight = Math.round(window.innerHeight * .6);
 
@@ -97,6 +95,10 @@ var fieldsForTables = {
               labels: ["Team","Player","Carries", "Yards", "Avg. Yds","Touchdowns", "Fumbles"],
             sort_type: ["string","string","float", "float", "float", "float", "float"]}
     };
+    
+    
+function init(home, year, away){
+    
 //Load in contents of CSV file
         
 //$.getJSON( "http://104.236.249.26/game/2015102502",function (error, data) {
