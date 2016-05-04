@@ -67,7 +67,7 @@ public function newTeam(Request $request) {
     
 public function buttonData() {
         $teams = team_plus::all();
-        $years = game::select('season_year')->orderBy('season_year')distinct()->get();
+        $years = game::select('season_year')->orderBy('season_year')->distinct()->get();
         $all_data = ["teams" => $teams, "years" => $years];
         return view('gamerecap', $all_data);
 }
