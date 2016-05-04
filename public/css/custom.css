@@ -1,0 +1,174 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2 {
+    font-family: 'Graduate', cursive;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+p {
+    text-align: center;
+}
+
+.score {
+    font-size: 30px;
+}
+
+.domain {
+    display: none;
+}
+
+/*
+.chart {
+    display: flex;
+    margin: auto;
+    align-content: center;
+}
+*/
+
+/*Field Dot Style*/
+.rush {
+        fill: #999;
+}
+
+.penalty {
+        fill: #ff0;
+        stroke: #999;
+        stroke-miterlimit: 10;
+    }
+
+.kickoff{
+     fill: green;
+}
+
+.pass {
+        fill: #fff;
+        stroke: #999;
+        stroke-miterlimit: 10;
+      }
+
+.punt {
+    fill: "#c1272d";
+}
+/*Field Dot Style End
+---------------------------------------------------------------------------------------------------------*/
+
+
+/*Header (Team Logos & Scores) Styles*/
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.header div {
+    margin-left: 3em;
+    margin-right: 3em;
+        
+}
+
+#game_details {
+   align-self: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/*Header Styles End
+
+---------------------------------------------------------------------------------------------------------*/
+
+.action {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.action div{
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
+.stats{
+/*    width: 75vw;*/
+    height: auto;
+    width: 100vw;
+    overflow: auto;
+    margin: auto;
+}
+.qtrheader{
+    padding-top: 3.5em;
+}
+
+table {
+    font-family: 'Roboto', sans-serif;
+    font-size: .9em;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: .5em;
+    border: 3px;
+}
+
+td {
+    padding: .5em;
+    border-right: 1px dotted #E6E6E6;
+}
+
+td:last-of-type {
+    border-right: 0px;
+}
+
+thead tr {
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+thead tr:hover {
+    cursor: grab;
+}
+
+tbody tr:hover {
+    background-color: darkgray;
+}
+
+.chart {
+    align-self: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.plot_title{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25em;
+    font-weight: 300;
+    
+}
+
+.chartlabel{
+    font-size: .85em;
+    fill: gray;
+}
+
+.tick text{
+    font-size: .75em;
+    fill: gray;
+}
+
+.barlabel{
+    font-size: .9em;
+    fill: gray;
+}
+.scatterlabel{
+    font-size: .7em;
+    fill: gray;
+}
+       

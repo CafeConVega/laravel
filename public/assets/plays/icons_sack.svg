@@ -1,0 +1,18 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #999;
+      }
+
+      .cls-2 {
+        fill: #c1272d;
+      }
+    </style>
+  </defs>
+  <title>icons</title>
+  <g id="_Group_" data-name="&lt;Group&gt;">
+    <circle id="_Path_" data-name="&lt;Path&gt;" class="cls-1" cx="6" cy="6" r="5.5"/>
+    <circle id="_Path_2" data-name="&lt;Path&gt;" class="cls-2" cx="6" cy="6" r="2.63"/>
+  </g>
+</svg>
