@@ -100,7 +100,7 @@
             <button class="q2_clicker clicker pbp" id="q2_pbp" value="">Play-By-Play</button>
         </div>
         <section id="stats_q2">
-                <h2 id="q2_action">Q1 Passing</h2>               
+                <h2 id="q2_action">Q2 Passing</h2>               
                 <div class="q2 passing action">
                     <div id="q2_chart_pass" class="chart"></div>
                     <div class="pass stats">
@@ -125,7 +125,7 @@
         </section>
     </section>
      <section id="third_quarter">
-        <h2 class ="qtrheader">Thirs Quarter Game Stats</h2>
+        <h2 class ="qtrheader">Third Quarter Game Stats</h2>
         <div class="buttons">
             <button class="q3_clicker clicker pass" id="q3_pass" value="">Passing</button>
             <button class="q3_clicker clicker rec" id="q3_rec" value="">Receiving</button>
@@ -217,6 +217,7 @@ d3.select("#searchbutton").on("click", function () {
         d3.selectAll("table").remove();
         d3.selectAll("#away_name_label").text(" ");
         d3.selectAll("#home_name_label").text(" ");
+        d3.selectAll(".score").remove();
         init(home, year, away);
         d3.select("main").classed("hidden", false);
     } else{
