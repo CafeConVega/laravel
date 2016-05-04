@@ -215,6 +215,8 @@ d3.select("#searchbutton").on("click", function () {
     if(home && year && away) {
         d3.selectAll("svg").remove();
         d3.selectAll("table").remove();
+        d3.selectAll("#away_name_label").remove();
+        d3.selectAll("#home_name_label").remove();
         init(home, year, away);
         d3.select("main").classed("hidden", false);
     } else{

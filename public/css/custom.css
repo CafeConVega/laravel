@@ -8,10 +8,11 @@ body{
     align-content: center;
     align-items: center;
     align-self: center;
+    justify-content: center;
 }
 
-.btn{
-    padding: 1em;
+.btn {
+    margin: 1em;
 }
 
 h1,
