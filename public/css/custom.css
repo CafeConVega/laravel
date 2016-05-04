@@ -2,20 +2,6 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
-.searchbuttons{
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-    align-self: center;
-    justify-content: center;
-    margin: auto;
-}
-
-.btn {
-    margin: 2px;
-}
-
 h1,
 h2 {
     font-family: 'Graduate', cursive;
@@ -67,6 +53,18 @@ p {
 .punt {
     fill: "#c1272d";
 }
+
+.grass{
+    opacity: 0.75;
+}
+
+.endzonelabel{
+    font-family: 'Graduate', cursive;
+    font-size: 1.5em;
+    fill: white;
+    text-transform: uppercase;
+}
+
 /*Field Dot Style End
 ---------------------------------------------------------------------------------------------------------*/
 
@@ -89,6 +87,22 @@ p {
    align-self: center;
     justify-content: center;
     text-align: center;
+}
+
+.pbp .chart .y .tick{
+    display: none;
+}
+
+.pbp .chart{
+    align-self: center;
+}
+
+.pbp .chart .x .tick:last-of-type{
+    display: none;
+}
+
+.pbp .chart .x .tick:first-of-type{
+    display: none;
 }
 
 /*Header Styles End
@@ -184,5 +198,15 @@ tbody tr:hover {
 .scatterlabel{
     font-size: .7em;
     fill: gray;
+}
+
+.d3tooltip {
+    position: absolute;
+    color: #424242;
+    z-index: 100;
+    background: #E6E6E6;
+    border: solid;
+    border-width: thin;
+    border-color: #A4A4A4;
 }
        

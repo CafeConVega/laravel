@@ -197,7 +197,7 @@ function tableData(act, fields, labels) {
         action_data_all.push(obj);
         obj = {};
     });
-    console.log("table data", action_data_all);
+    
     action_data_all.forEach(function(d){
         action_pp.forEach(function(a){
             data.players.forEach(function(p){

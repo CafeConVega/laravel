@@ -301,7 +301,6 @@ function makeTable(act, qtr, id){
     
 //Use munched data to crate a scatter plot
 function passingGraph(z) {
-        console.log("passingGraph data", z);
         var home_color_scale = d3.scale.linear().range(["#FFFFFF", teams.home_team_data[0].color_primary]);
         var htext_color_scale = d3.scale.linear().range([teams.home_team_data[0].color_primary,"#FFFFFF"]);
     
@@ -341,6 +340,7 @@ function passingGraph(z) {
         // Create your axes here.
         var xAxis = d3.svg.axis()
             .scale(xScale)
+            .tickFormat(function(d) { return d + "%"; })
             .orient("bottom")
             .ticks(10); // fix this to a good number of ticks for your scale later.
 
@@ -369,7 +369,7 @@ function passingGraph(z) {
         circles
                 .enter()
                 .append("circle")
-                .classed("dots", true)
+                .classed("passdots", true)
                 .attr("cx", function (d) {
                     return xScale(+d.completion_rate);
                 })
@@ -459,6 +459,39 @@ function passingGraph(z) {
                         return d["quarter"] + "\r\n" + d["first_name"].substring(0,1)+"."+d["last_name"].substring(0,1);
                     }  
             });
+    
+    d3.selectAll(".passdots")
+        .on("mouseover", cirmouseoverFunc)
+        .on("mouseout", cirmouseoutFunc)
+        .on("mousemove", cirmousemoveFunc);
+
+    
+    function cirmouseoverFunc(d) {
+            // Adding a subtle animation to increase the dot size when over it!
+        
+                d3.select(this)
+                    .transition()
+                    .duration(50)
+                    .attr("stroke", d.color_secondary)
+                    .attr("stroke-width", 3);
+                d3tooltip
+                    .style("display", null) // this removes the display none setting from it
+                   .html("<p>"+"("+d.team+") "+d.player+" passed for "+d.yards+" yards, and completed "+d.completion_rate+"% of his passes in "+d.quarter+"</p>");
+    }
+
+    function cirmousemoveFunc(d) {
+                d3tooltip
+                    .style("top", (d3.event.pageY - 10) + "px" )
+                    .style("left", (d3.event.pageX + 10) + "px");
+    }
+
+    function cirmouseoutFunc(d) {
+            // shrink it back down:
+                d3.select(this)
+                    .attr("stroke", "");
+                d3tooltip
+                    .style("display", "none");  // this sets it to invisible!
+    } 
         
 
 }
@@ -540,7 +573,11 @@ function makeBarChart(id, act, qtr, metric){
         var rects = rect_g.selectAll("rect")
                     .data(dataset)
                     .enter()
-                    .append("rect");
+                    .append("rect")
+                    .attr("class", function (d) {
+                        return d["Team"]
+                    })
+                    .classed(act+"rect", true);
 
                 rects.attr("x", function(d) { return widthScale(Math.min(0, d[metric])); })
                     .attr("y", function (d, i) {
@@ -550,14 +587,11 @@ function makeBarChart(id, act, qtr, metric){
                         return Math.abs(widthScale(d[metric]) - widthScale(0));
                     })
                     .attr("height", heightScale.rangeBand())
-                    .attr("class", function (d) {
-                        return d["Team"]
-                    })
-                    .style("fill", function(d) {return d.color_primary;}) 
-                    .append("title")
-                    .text(function (d) {
-                        return "(" + d["Team"] + ") " + d["Player"] + "'s receptions: " + d[metric];
-                    });
+                    .style("fill", function(d) {return d.color_primary;});
+//                    .append("title")
+//                    .text(function (d) {
+//                        return "(" + d["Team"] + ") " + d["Player"] + "'s receptions: " + d[metric];
+//                    });
 
                 svg.append("g")
                     .attr("class", "x axis")
@@ -596,6 +630,41 @@ function makeBarChart(id, act, qtr, metric){
                     .text(function (d) {
                         return d[metric];
                     });
+    
+    console.log("bar data "+act+" "+qtr, dataset);
+    
+    d3.selectAll("."+act+"rect")
+        .on("mouseover", mouseoverFunc)
+        .on("mouseout", mouseoutFunc)
+        .on("mousemove", mousemoveFunc);
+
+    
+    function mouseoverFunc(d) {
+            // Adding a subtle animation to increase the dot size when over it!
+        
+                d3.select(this)
+                    .transition()
+                    .duration(50)
+                    .attr("stroke", d.color_secondary)
+                    .attr("stroke-width", 3);
+                d3tooltip
+                    .style("display", null) // this removes the display none setting from it
+                   .html("<p>"+"("+d.Team+") "+d.Player+" had "+d.Yards+" "+act+" yards</p>");
+    }
+
+    function mousemoveFunc(d) {
+                d3tooltip
+                    .style("top", (d3.event.pageY - 10) + "px" )
+                    .style("left", (d3.event.pageX + 10) + "px");
+    }
+
+    function mouseoutFunc(d) {
+            // shrink it back down:
+                d3.select(this)
+                    .attr("stroke", "");
+                d3tooltip
+                    .style("display", "none");  // this sets it to invisible!
+    } 
 } //End makeBarChart
 
 //Create graph of plays on a field
@@ -747,7 +816,6 @@ function fieldGraph(id, qtr) {
                 d.yardline = 0;
             }
             
-            
          }
         
         if (d.note) {
@@ -776,7 +844,7 @@ function fieldGraph(id, qtr) {
             .replace(/  /g," ");
 //            .replace(/ /g,"_");
         
-        console.log("play "+d.play_id+" type "+d.type);
+//        console.log("play "+d.play_id+" type "+d.type);
         
 //        d.yardchange = yardchange;
         d.yardchange = yardchange.reduce(function(a, b) {
@@ -820,12 +888,10 @@ function fieldGraph(id, qtr) {
             d.type += " TD";
     
         }
-        console.log(d.play_id+" "+d.type);
+//        console.log(d.play_id+" "+d.type);
     });
     
     subset["plays_"+qtr] = data.plays.filter(function(d,i) { return data.plays[i].time.substring(1, 3) === qtr; });
-    
-    console.log("test plays_qtr", qtr);
     
     subset["drives_"+qtr] = data.drives.filter(function(d,i) { return data.drives[i].start_time.substring(1, 3) === qtr; });
     
@@ -867,8 +933,6 @@ function fieldGraph(id, qtr) {
         .sortKeys(d3.ascending)
         .entries(subset["plays_"+qtr]);
     
-    console.log("Field"+qtr+"PBP Dataset", subset["dataset_"+qtr]);
-    
     var margin = {
     top: Math.round(window.innerHeight * .035),
     left: Math.round(window.innerWidth * .20),
@@ -887,6 +951,17 @@ function fieldGraph(id, qtr) {
 
     var xAxis = d3.svg.axis()
         .scale(xScale)
+         .tickFormat(function(d) { 
+             if(d == 0) {
+                 return 50; 
+             }
+             if(d > 0) {
+                 return 50-d; 
+             }
+              if(d < 0) {
+                 return 50+d; 
+             }
+         })
         .orient("bottom");
 
     var yAxis = d3.svg.axis()
@@ -940,8 +1015,29 @@ function fieldGraph(id, qtr) {
         .attr("height", height)
         .attr("fill", teams.away_team_data[0].color_primary);
     
-        
-        
+    svg.append("text")
+            .attr("class", "chartlabel xlabel")
+            .attr("transform", "translate(" + width / 2 + " ," +
+                height + ")")
+            .style("text-anchor", "middle")
+            .attr("dy", "50")
+            .text("Yardline");
+    
+    svg.append("text")
+            .attr("class", "endzonelabel home")
+            .attr("transform", "rotate(-90)")
+            .style("text-anchor", "middle")
+            .attr("dx", "-150")
+            .attr("dy", xScale(-54))
+            .text(teams.home_team_data[0].name);
+    
+    svg.append("text")
+            .attr("class", "endzonelabel away")
+            .attr("transform", "rotate(90)")
+            .style("text-anchor", "middle")
+            .attr("dx", "157")
+            .attr("dy", xScale(-173))
+            .text(teams.away_team_data[0].name);
     
     svg.append("g")
                 .attr("class", "x axis")
@@ -953,73 +1049,44 @@ function fieldGraph(id, qtr) {
                 .attr("id", "yaxis")
                 .call(yAxis);
     
-    var circles = svg.selectAll("g.plays")
+    var circles = svg.selectAll("circle.plays")
     .data(subset["dataset_"+qtr], function (d) { return d.key; });
     
     circles
         .enter()
         .append("circle")
-        .transition()
-        .delay(function (d, i) {
-            return i * 10;
-        })
-        .duration(1000)
+        .attr("class", function (d) { return d.values[0].type; })
+        .classed("plays", true)
+        .attr("id", function(d) { return d.key; })
         .attr("cx", function (d) {
             return xScale(d.values[0].yardplot);
         })
         .attr("cy", function (d) {
                     return yScale(d.values[0].drive_id);
         })
-        .attr("class", function (d) { return d.values[0].type; })
-        .attr("id", function(d) { return d.key; })
-        .attr("r", dotRadius);
-    
-    
-//    circles
-//        .enter()
-//        .append(function(d){ return svg.createElementNS("assets/plays/icons_"+d.values[0].type+".svg","g"); })
-////        .attr("src", function(d){ return "assets/plays/icons_"+d.values[0].type+".png"; })
-//        .transition()
-//        .delay(function (d, i) {
-//            return i * 10;
-//        })
-//        .duration(1000)
-//        .attr("cx", function (d) {
-//            return xScale(d.values[0].yardplot);
-//        })
-//        .attr("cy", function (d) {
-//                    return yScale(d.values[0].drive_id);
-//        })
-//        .attr("class", function (d) { return d.values[0].type; })
-//        .attr("id", function(d) { return d.key; });
-//        .attr("r", dotRadius);
-    
-//    d3.selectAll(".rush").append(function (d){ 
-//    return "assets/plays/icons_rush.svg";
-//    });
-//    
-//    console.log("rush",d3.selectAll(".rush"));
-//    
-    d3.selectAll("circle")
+        .attr("r", dotRadius)
         .on("mouseover", cirmouseoverFunc)
         .on("mouseout", cirmouseoutFunc)
         .on("mousemove", cirmousemoveFunc);
     
+      
+    //console.log("all play dots", d3.selectAll(".play"));
+    
+        
     function cirmouseoverFunc(d) {
             // Adding a subtle animation to increase the dot size when over it!
                 d3.select(this)
                     .transition()
                     .duration(50)
                     .style("opacity", 1)
-                    .attr("r", dotRadius+2)
-                    .attr("fill", "red");
+                    .attr("r", dotRadius+2);
                 d3tooltip
                     .style("display", null) // this removes the display none setting from it
-                    .style("background", "lightgray")
                    .html("<p>" + d.values[0].description +
-                            "<br>Play: " + d.values[0].play_id +
-                            "<br> Yardplot: "+d.values[0].yardplot +
-                              "<br>Team: " + d.values[0].pos_team + "</p>");
+//                            "<br>Play: " + d.values[0].play_id +
+//                            "<br> Yardplot: "+d.values[0].yardplot +
+//                              "<br>Team: " + d.values[0].pos_team+ 
+                         "</p>");
         
     }
 
@@ -1033,11 +1100,10 @@ function fieldGraph(id, qtr) {
             // shrink it back down:
                 d3.select(this)
                     .transition()
-                    .attr("r", dotRadius)
-                    .attr("fill", "black");
+                    .attr("r", dotRadius);
                 d3tooltip
                     .style("display", "none");  // this sets it to invisible!
-} 
+    } 
     
 }
 
