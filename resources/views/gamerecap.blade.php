@@ -30,6 +30,168 @@
 </div>
 <button id="searchbutton" class="btn btn-success" type="button">Go</button>
 </div>
+<main class="hidden">
+<h1>GAME RECAP</h1>
+    
+    <section class="header">
+        <div id="away_team" class="iconsect away">
+           <h1 id="away_label" class="header">AWAY</h1>
+           <h1 id="away_name_label" class="header"></h1>
+            <object id="away_team_icon" data="" type="image/svg+xml">
+                <img id="away_team_png"  src="" />
+            </object>
+        </div>
+
+        <div id="game_details">
+            <h1>VS.</h1>
+            <h3 id= "city"></h3>
+            <h3 id="stadium"></h3>
+            <h3 id="date"></h3>
+        </div>
+
+        <div id="home_team" class="iconsect home">
+           <h1 id="home_label" class="header">HOME</h1>
+           <h1 id="home_name_label" class="header"></h1>
+            <object id ="home_team_icon" type="image/svg+xml">
+                <img id="home_team_png" src="" />
+            </object>
+        </div>
+    </section>
+       
+    <section id="first_quarter">
+        <h2 class ="qtrheader">First Quarter Game Stats</h2>
+        <div class="buttons">
+            <button class="q1_clicker clicker pass" id="q1_pass" value="">Passing</button>
+            <button class="q1_clicker clicker rec" id="q1_rec" value="">Receiving</button>
+            <button class="q1_clicker clicker rush" id="q1_rush" value="">Rushing</button>
+            <button class="q1_clicker clicker pbp" id="q1_pbp" value="">Play-By-Play</button>
+        </div>
+        <section id="stats_q1">
+                <h2 id="q1_action">Q1 Passing</h2>               
+                <div class="q1 passing action">
+                    <div id="q1_chart_pass" class="chart"></div>
+                    <div class="pass stats">
+                        <div id="q1_table_pass" class="table"></div>
+                    </div>
+                </div>
+                <div class="q1 receiving action hidden">
+                    <div id="q1_chart_rec" class="chart"></div>
+                    <div class="receptions stats">
+                        <div id="q1_table_rec" class="table"></div>
+                    </div>
+                </div>
+                <div class="q1 rushing action hidden">                    
+                    <div id="q1_chart_rush" class="chart"></div>  
+                    <div class="rush stats">
+                        <div id="q1_table_rush" class="table"></div>
+                    </div>
+                </div>
+                <div class="q1 pbp action hidden">                    
+                    <div id="q1graphic" class="chart"></div>
+                </div>
+        </section>
+    </section>
+    <section id="second_quarter">
+        <h2 class ="qtrheader">Second Quarter Game Stats</h2>
+        <div class="buttons">
+            <button class="q2_clicker clicker pass" id="q2_pass" value="">Passing</button>
+            <button class="q2_clicker clicker rec" id="q2_rec" value="">Receiving</button>
+            <button class="q2_clicker clicker rush" id="q2_rush" value="">Rushing</button>
+            <button class="q2_clicker clicker pbp" id="q2_pbp" value="">Play-By-Play</button>
+        </div>
+        <section id="stats_q2">
+                <h2 id="q2_action">Q1 Passing</h2>               
+                <div class="q2 passing action">
+                    <div id="q2_chart_pass" class="chart"></div>
+                    <div class="pass stats">
+                        <div id="q2_table_pass" class="table"></div>
+                    </div>
+                </div>
+                <div class="q2 receiving action hidden">
+                    <div id="q2_chart_rec" class="chart"></div>
+                    <div class="receptions stats">
+                        <div id="q2_table_rec" class="table"></div>
+                    </div>
+                </div>
+                <div class="q2 rushing action hidden">                    
+                    <div id="q2_chart_rush" class="chart"></div>  
+                    <div class="rush stats">
+                        <div id="q2_table_rush" class="table"></div>
+                    </div>
+                </div>
+                <div class="q2 pbp action hidden">                    
+                    <div id="q2graphic" class="chart"></div>
+                </div>
+        </section>
+    </section>
+     <section id="third_quarter">
+        <h2 class ="qtrheader">Thirs Quarter Game Stats</h2>
+        <div class="buttons">
+            <button class="q3_clicker clicker pass" id="q3_pass" value="">Passing</button>
+            <button class="q3_clicker clicker rec" id="q3_rec" value="">Receiving</button>
+            <button class="q3_clicker clicker rush" id="q3_rush" value="">Rushing</button>
+            <button class="q3_clicker clicker pbp" id="q3_pbp" value="">Play-By-Play</button>
+        </div>
+        <section id="stats_q3">
+                <h2 id="q3_action">Q3 Passing</h2>               
+                <div class="q3 passing action">
+                    <div id="q3_chart_pass" class="chart"></div>
+                    <div class="pass stats">
+                        <div id="q3_table_pass" class="table"></div>
+                    </div>
+                </div>
+                <div class="q3 receiving action hidden">
+                    <div id="q3_chart_rec" class="chart"></div>
+                    <div class="receptions stats">
+                        <div id="q3_table_rec" class="table"></div>
+                    </div>
+                </div>
+                <div class="q3 rushing action hidden">                    
+                    <div id="q3_chart_rush" class="chart"></div>  
+                    <div class="rush stats">
+                        <div id="q3_table_rush" class="table"></div>
+                    </div>
+                </div>
+                <div class="q3 pbp action hidden">                    
+                    <div id="q3graphic" class="chart"></div>
+                </div>
+        </section>
+    </section>
+     <section id="fourth_quarter">
+        <h2 class ="qtrheader">Fourth Quarter Game Stats</h2>
+        <div class="buttons">
+            <button class="q4_clicker clicker pass" id="q4_pass" value="">Passing</button>
+            <button class="q4_clicker clicker rec" id="q4_rec" value="">Receiving</button>
+            <button class="q4_clicker clicker rush" id="q4_rush" value="">Rushing</button>
+            <button class="q4_clicker clicker pbp" id="q4_pbp" value="">Play-By-Play</button>
+        </div>
+        <section id="stats_q4">
+                <h2 id="q4_action">Q4 Passing</h2>               
+                <div class="q4 passing action">
+                    <div id="q4_chart_pass" class="chart"></div>
+                    <div class="pass stats">
+                        <div id="q4_table_pass" class="table"></div>
+                    </div>
+                </div>
+                <div class="q4 receiving action hidden">
+                    <div id="q4_chart_rec" class="chart"></div>
+                    <div class="receptions stats">
+                        <div id="q4_table_rec" class="table"></div>
+                    </div>
+                </div>
+                <div class="q4 rushing action hidden">                    
+                    <div id="q4_chart_rush" class="chart"></div>  
+                    <div class="rush stats">
+                        <div id="q4_table_rush" class="table"></div>
+                    </div>
+                </div>
+                <div class="q4 pbp action hidden">                    
+                    <div id="q4graphic" class="chart"></div>
+                </div>
+        </section>
+    </section>
+</main>
+
 <script>
     var home, year, away;
 d3.selectAll(".home_option").on("click", function () {
@@ -52,6 +214,7 @@ d3.selectAll(".season_option").on("click", function () {
 d3.select("#searchbutton").on("click", function () {
     if(home && year && away) {
         init(home, year, away);
+        d3.select("main").classed("hidden", false);
     } else{
         alert("Make sure a home team, year, and away team have been selected");
     } 
