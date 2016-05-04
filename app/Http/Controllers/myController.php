@@ -69,7 +69,7 @@ public function buttonData() {
         $teams = team_plus::all();
         $years = game::select('season_year')->distinct()->get();
         $all_data = ["teams" => $teams, "years" => $years];
-        return view('select_game', $all_data);
+        return view('gamerecap', $all_data);
 }
     
 //public function allYears() {
