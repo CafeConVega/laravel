@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="searchbuttons row container">       
+<div class="searchbuttons row container position center">       
 <div class="dropdown hometeam">
   <button id="button_home_team" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Home Team<span class="caret"></span></button>
   <ul class="dropdown-menu">
