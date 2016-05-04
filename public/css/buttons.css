@@ -87,6 +87,15 @@
 	top:1px;
 }
 
+.btn {
+    margin: 2px;
+}
+
+.searchbuttons{
+    display: flex;
+    flex-direction: row;
+}
+
 /*
 button styles from http://www.bestcssbuttongenerator.com/
 */
