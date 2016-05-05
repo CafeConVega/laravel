@@ -933,9 +933,12 @@ function fieldGraph(id, qtr) {
         .sortKeys(d3.ascending)
         .entries(subset["plays_"+qtr]);
     
+   var fullwidth = Math.round(window.innerWidth * .6);
+    var fullheight = Math.round(window.innerHeight * .6);
+    
     var margin = {
     top: Math.round(window.innerHeight * .035),
-    left: Math.round(window.innerWidth * .20),
+    left: Math.round(window.innerWidth * .05),
     right: Math.round(window.innerWidth * .05),
     bottom: Math.round(window.innerHeight * .1)
     };

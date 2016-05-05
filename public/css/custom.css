@@ -208,5 +208,27 @@ tbody tr:hover {
     border: solid;
     border-width: thin;
     border-color: #A4A4A4;
+    width: 10em;
+    text-align: left;
+}
+
+.actsection{
+    display: flex;
+    flex-direction: row;
+}
+
+.writeup{
+    text-align: left;
+    line-height: 1.75em;
+}
+
+.pbp .actsection{
+    display: flex;
+    flex-direction: column;
+}
+
+.pbp .writeup{
+    width: 70vw;
+    margin: auto;
 }
        

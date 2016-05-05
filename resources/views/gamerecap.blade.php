@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+<title>NFL Game Statistical Recap</title>
 <div class="searchbuttons row container">       
 <div class="dropdown hometeam">
   <button id="button_home_team" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Home Team<span class="caret"></span></button>
@@ -44,12 +46,13 @@
             </object>
         </div>
 
-        <div id="game_details">
-            <h1>VS.</h1>
+ <div id="game_details">
             <h3 id= "city"></h3>
             <h3 id="stadium"></h3>
             <h3 id="date"></h3>
-        </div>
+            <h1>Intro</h1>
+            <p class="intro writeup">This website provides a statistical overview of the selected football game. There are sections for each quarter, which display statistics in various forms for passing, receiving, rushing, and play-by-play. Play-by-plays are graphical representations of each play that affected field position in that quarter.</p>
+</div>
 
         <div id="home_team" class="iconsect home">
            <h1 id="home_label" class="header">HOME</h1>
@@ -59,6 +62,9 @@
             </object>
         </div>
     </section>
+       
+       
+       
        
     <section id="first_quarter">
         <h2 class ="qtrheader">First Quarter Game Stats</h2>
@@ -71,28 +77,43 @@
         <section id="stats_q1">
                 <h2 id="q1_action">Q1 Passing</h2>               
                 <div class="q1 passing action">
-                    <div id="q1_chart_pass" class="chart"></div>
-                    <div class="pass stats">
+                    <div class="q1_pass actsection">
+                        <div id="q1_chart_pass" class="chart"></div>
+                        <p class="writeup">The scatter plot to the left visualizes yards passed on the vertical axis and pass completion rates (passes thrown that were caught / total passes thrown) on the horizontal axis. Plot points appear for every completed quarter and player to show how players performed throughout the game. Dots are labeled by quarter and player’s initials. Hover over the dots to get additional information like the plotted statistics and player’s full name.<br><br>The table below the scatter plot lists all players that attempted a pass in the quarter along with various relevant metrics. The yards column is a heatmap displaying a darker shade of green for higher values.</p>
+                    </div>
+                      <div class="pass stats">
                         <div id="q1_table_pass" class="table"></div>
                     </div>
                 </div>
                 <div class="q1 receiving action hidden">
-                    <div id="q1_chart_rec" class="chart"></div>
+                    <div class="q1_rec actsection">
+                        <div id="q1_chart_rec" class="chart"></div>
+                         <p class="writeup">The bar chart to the left visualizes the receiving yards gained by each pass catcher for the noted quarter. Hover over the bars to display additional information.<br><br>The table below the bar chart lists all players that caught a pass in the quarter along with various relevant metrics. The yards column is a heat-map signaling the highest numerical value with the darkest shade of green.</p>
+                    </div>
                     <div class="receptions stats">
                         <div id="q1_table_rec" class="table"></div>
                     </div>
                 </div>
-                <div class="q1 rushing action hidden">                    
-                    <div id="q1_chart_rush" class="chart"></div>  
+                <div class="q1 rushing action hidden">  
+                    <div class="q1_rush actsection">                 
+                        <div id="q1_chart_rush" class="chart"></div>  
+                        <p class="writeup">The bar chart to the left visualizes the rushing yards gained by each player for the noted quarter. Hover over the bars to display additional information.<br><br>The table below the bar chart lists all players with a rushing attempt in the quarter along with various relevant metrics. The yards column is a heat-map signaling the highest numerical value with the darkest shade of green.</p>
+                    </div>
                     <div class="rush stats">
                         <div id="q1_table_rush" class="table"></div>
                     </div>
                 </div>
-                <div class="q1 pbp action hidden">                    
-                    <div id="q1graphic" class="chart"></div>
+                <div class="q1 pbp action hidden">     
+                    <div class="q1_pbp actsection">              
+                        <div id="q1graphic" class="chart"></div>
+                        <p class="writeup">This play-by-play graphic displays a dot for each play that affected field position in the quarter. Each row of dots represents a drive (each time a team possessed the ball). Each row of dots may be read from right-to-left or left-to-right depending on which direction the possessing team is driving down the field.<br><br>Dots are styled according to the type of play. For example, a run is indicated by a gray filled dot, a pass is indicated by a white filled dot with gray outline, a penalty is indicated by a yellow filled dot, etc.<br><br>Please note that this portion of the site is still under construction.</p>
+                    </div>
+                    
                 </div>
         </section>
     </section>
+    
+    
     <section id="second_quarter">
         <h2 class ="qtrheader">Second Quarter Game Stats</h2>
         <div class="buttons">
@@ -104,28 +125,43 @@
         <section id="stats_q2">
                 <h2 id="q2_action">Q2 Passing</h2>               
                 <div class="q2 passing action">
-                    <div id="q2_chart_pass" class="chart"></div>
-                    <div class="pass stats">
+                    <div class="q2_pass actsection">
+                        <div id="q2_chart_pass" class="chart"></div>
+                        <p class="writeup">The scatter plot to the left visualizes yards passed on the vertical axis and pass completion rates (passes thrown that were caught / total passes thrown) on the horizontal axis. Plot points appear for every completed quarter and player to show how players performed throughout the game. Dots are labeled by quarter and player’s initials. Hover over the dots to get additional information like the plotted statistics and player’s full name.<br><br>The table below the scatter plot lists all players that attempted a pass in the quarter along with various relevant metrics. The yards column is a heatmap displaying a darker shade of green for higher values.</p>
+                    </div>
+                      <div class="pass stats">
                         <div id="q2_table_pass" class="table"></div>
                     </div>
                 </div>
                 <div class="q2 receiving action hidden">
-                    <div id="q2_chart_rec" class="chart"></div>
+                    <div class="q2_rec actsection">
+                        <div id="q2_chart_rec" class="chart"></div>
+                         <p class="writeup">The bar chart to the left visualizes the receiving yards gained by each pass catcher for the noted quarter. Hover over the bars to display additional information.<br><br>The table below the bar chart lists all players that caught a pass in the quarter along with various relevant metrics. The yards column is a heat-map signaling the highest numerical value with the darkest shade of green.</p>
+                    </div>
                     <div class="receptions stats">
                         <div id="q2_table_rec" class="table"></div>
                     </div>
                 </div>
-                <div class="q2 rushing action hidden">                    
-                    <div id="q2_chart_rush" class="chart"></div>  
+                <div class="q2 rushing action hidden">  
+                    <div class="q2_rush actsection">                 
+                        <div id="q2_chart_rush" class="chart"></div>  
+                        <p class="writeup">The bar chart to the left visualizes the rushing yards gained by each player for the noted quarter. Hover over the bars to display additional information.<br><br>The table below the bar chart lists all players with a rushing attempt in the quarter along with various relevant metrics. The yards column is a heat-map signaling the highest numerical value with the darkest shade of green.</p>
+                    </div>
                     <div class="rush stats">
                         <div id="q2_table_rush" class="table"></div>
                     </div>
                 </div>
-                <div class="q2 pbp action hidden">                    
-                    <div id="q2graphic" class="chart"></div>
+                <div class="q2 pbp action hidden">     
+                    <div class="q2_pbp actsection">              
+                        <div id="q2graphic" class="chart"></div>
+                        <p class="writeup">This play-by-play graphic displays a dot for each play that affected field position in the quarter. Each row of dots represents a drive (each time a team possessed the ball). Each row of dots may be read from right-to-left or left-to-right depending on which direction the possessing team is driving down the field.<br><br>Dots are styled according to the type of play. For example, a run is indicated by a gray filled dot, a pass is indicated by a white filled dot with gray outline, a penalty is indicated by a yellow filled dot, etc.<br><br>Please note that this portion of the site is still under construction.</p>
+                    </div>
+                    
                 </div>
         </section>
     </section>
+    
+    
      <section id="third_quarter">
         <h2 class ="qtrheader">Third Quarter Game Stats</h2>
         <div class="buttons">
@@ -137,28 +173,43 @@
         <section id="stats_q3">
                 <h2 id="q3_action">Q3 Passing</h2>               
                 <div class="q3 passing action">
-                    <div id="q3_chart_pass" class="chart"></div>
-                    <div class="pass stats">
+                    <div class="q3_pass actsection">
+                        <div id="q3_chart_pass" class="chart"></div>
+                        <p class="writeup">The scatter plot to the left visualizes yards passed on the vertical axis and pass completion rates (passes thrown that were caught / total passes thrown) on the horizontal axis. Plot points appear for every completed quarter and player to show how players performed throughout the game. Dots are labeled by quarter and player’s initials. Hover over the dots to get additional information like the plotted statistics and player’s full name.<br><br>The table below the scatter plot lists all players that attempted a pass in the quarter along with various relevant metrics. The yards column is a heatmap displaying a darker shade of green for higher values.</p>
+                    </div>
+                      <div class="pass stats">
                         <div id="q3_table_pass" class="table"></div>
                     </div>
                 </div>
                 <div class="q3 receiving action hidden">
-                    <div id="q3_chart_rec" class="chart"></div>
+                    <div class="q3_rec actsection">
+                        <div id="q3_chart_rec" class="chart"></div>
+                         <p class="writeup">The bar chart to the left visualizes the receiving yards gained by each pass catcher for the noted quarter. Hover over the bars to display additional information.<br><br>The table below the bar chart lists all players that caught a pass in the quarter along with various relevant metrics. The yards column is a heat-map signaling the highest numerical value with the darkest shade of green.</p>
+                    </div>
                     <div class="receptions stats">
                         <div id="q3_table_rec" class="table"></div>
                     </div>
                 </div>
-                <div class="q3 rushing action hidden">                    
-                    <div id="q3_chart_rush" class="chart"></div>  
+                <div class="q3 rushing action hidden">  
+                    <div class="q3_rush actsection">                 
+                        <div id="q3_chart_rush" class="chart"></div>  
+                        <p class="writeup">The bar chart to the left visualizes the rushing yards gained by each player for the noted quarter. Hover over the bars to display additional information.<br><br>The table below the bar chart lists all players with a rushing attempt in the quarter along with various relevant metrics. The yards column is a heat-map signaling the highest numerical value with the darkest shade of green.</p>
+                    </div>
                     <div class="rush stats">
                         <div id="q3_table_rush" class="table"></div>
                     </div>
                 </div>
-                <div class="q3 pbp action hidden">                    
-                    <div id="q3graphic" class="chart"></div>
+                <div class="q3 pbp action hidden">     
+                    <div class="q3_pbp actsection">              
+                        <div id="q3graphic" class="chart"></div>
+                        <p class="writeup">This play-by-play graphic displays a dot for each play that affected field position in the quarter. Each row of dots represents a drive (each time a team possessed the ball). Each row of dots may be read from right-to-left or left-to-right depending on which direction the possessing team is driving down the field.<br><br>Dots are styled according to the type of play. For example, a run is indicated by a gray filled dot, a pass is indicated by a white filled dot with gray outline, a penalty is indicated by a yellow filled dot, etc.<br><br>Please note that this portion of the site is still under construction.</p>
+                    </div>
+                    
                 </div>
         </section>
     </section>
+    
+    
      <section id="fourth_quarter">
         <h2 class ="qtrheader">Fourth Quarter Game Stats</h2>
         <div class="buttons">
@@ -170,28 +221,43 @@
         <section id="stats_q4">
                 <h2 id="q4_action">Q4 Passing</h2>               
                 <div class="q4 passing action">
-                    <div id="q4_chart_pass" class="chart"></div>
-                    <div class="pass stats">
+                    <div class="q4_pass actsection">
+                        <div id="q4_chart_pass" class="chart"></div>
+                        <p class="writeup">The scatter plot to the left visualizes yards passed on the vertical axis and pass completion rates (passes thrown that were caught / total passes thrown) on the horizontal axis. Plot points appear for every completed quarter and player to show how players performed throughout the game. Dots are labeled by quarter and player’s initials. Hover over the dots to get additional information like the plotted statistics and player’s full name.<br><br>The table below the scatter plot lists all players that attempted a pass in the quarter along with various relevant metrics. The yards column is a heatmap displaying a darker shade of green for higher values.</p>
+                    </div>
+                      <div class="pass stats">
                         <div id="q4_table_pass" class="table"></div>
                     </div>
                 </div>
                 <div class="q4 receiving action hidden">
-                    <div id="q4_chart_rec" class="chart"></div>
+                    <div class="q4_rec actsection">
+                        <div id="q4_chart_rec" class="chart"></div>
+                         <p class="writeup">The bar chart to the left visualizes the receiving yards gained by each pass catcher for the noted quarter. Hover over the bars to display additional information.<br><br>The table below the bar chart lists all players that caught a pass in the quarter along with various relevant metrics. The yards column is a heat-map signaling the highest numerical value with the darkest shade of green.</p>
+                    </div>
                     <div class="receptions stats">
                         <div id="q4_table_rec" class="table"></div>
                     </div>
                 </div>
-                <div class="q4 rushing action hidden">                    
-                    <div id="q4_chart_rush" class="chart"></div>  
+                <div class="q4 rushing action hidden">  
+                    <div class="q4_rush actsection">                 
+                        <div id="q4_chart_rush" class="chart"></div>  
+                        <p class="writeup">The bar chart to the left visualizes the rushing yards gained by each player for the noted quarter. Hover over the bars to display additional information.<br><br>The table below the bar chart lists all players with a rushing attempt in the quarter along with various relevant metrics. The yards column is a heat-map signaling the highest numerical value with the darkest shade of green.</p>
+                    </div>
                     <div class="rush stats">
                         <div id="q4_table_rush" class="table"></div>
                     </div>
                 </div>
-                <div class="q4 pbp action hidden">                    
-                    <div id="q4graphic" class="chart"></div>
+                <div class="q4 pbp action hidden">     
+                    <div class="q4_pbp actsection">              
+                        <div id="q4graphic" class="chart"></div>
+                        <p class="writeup">This play-by-play graphic displays a dot for each play that affected field position in the quarter. Each row of dots represents a drive (each time a team possessed the ball). Each row of dots may be read from right-to-left or left-to-right depending on which direction the possessing team is driving down the field.<br><br>Dots are styled according to the type of play. For example, a run is indicated by a gray filled dot, a pass is indicated by a white filled dot with gray outline, a penalty is indicated by a yellow filled dot, etc.<br><br>Please note that this portion of the site is still under construction.</p>
+                    </div>
+                    
                 </div>
         </section>
     </section>
+    
+    
 </main>
 
 <script>
